@@ -27,9 +27,30 @@
 - 队尾：允许插入的一端
 - 先进先出**FIFO**
 # 顺序队列
-
+- 连续的存储单元
+- 头指针指向队头元素
+- 尾指针指向队尾元素
 # 循环队列
-
+- 首尾相连的顺序存储的队列
+- 操作
+```c++
+    Q.rear = Q.front = 0;                           // 初始化
+    rear = (rear + 1) % MaxSize;                    // 入队
+    front = (front + 1) % MaxSize;                  // 出队
+    queueLen = (rear + MaxSize - front) % MaxSize;  // 队列长度
+```
+- 判断空队列或满队列
+```c++
+    // 使用一个单元区分队空或队满
+    (Q.rear + 1) % MaxSize = Q.front;   //
+    Q.front = Q.rear;                   //
+    // 类型中增加表示个数的数据成员
+    Q.size = 0;                         //
+    Q.size = MaxSize;                   //
+    // 增加tag成员
+    tag = 0;                            //
+    tag = 1;                            //
+```
 # 链式队列
 
 # 双端队列
